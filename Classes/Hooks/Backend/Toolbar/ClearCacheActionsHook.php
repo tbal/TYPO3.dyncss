@@ -34,7 +34,7 @@ class ClearCacheActionsHook implements ClearCacheActionsHookInterface {
 			 * @link https://docs.typo3.org/typo3cms/extensions/core/latest/Changelog/7.1/Deprecation-64922-DeprecatedEntryPoints.html
 			 */
 			$hrefParams = ['vC' => $this->getBackendUser()->veriCode(), 'cacheCmd' => 'dyncss', 'ajaxCall' => 1];
-			if (TYPO3_version < '7.1') {
+			if (version_compare(TYPO3_version, '7.1', '<')) {
 				$href = 'tce_db.php?' . http_build_query($hrefParams);
 			} else {
 				$href = BackendUtility::getModuleUrl('tce_db', $hrefParams);
